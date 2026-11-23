@@ -1,0 +1,21 @@
+{% extends "blog/base.html" %}
+
+{% block title %}Статьи{% endblock %}
+{% block content %}
+<div class="d-flex flex-wrap justify-content-between align-items-center gap-2 mb-4">
+  <h1 class="mb-0">Статьи</h1>
+  <a href="{% url 'article_create' %}" class="btn btn-primary">Написать статью</a>
+</div>
+
+{% for article in articles %}
+  <article class="card mb-3">
+    <div class="card-body">
+      <h2 class="h4"><a href="{{ article.get_absolute_url }}">{{ article.title }}</a></h2>
+      <p class="text-muted mb-2">{{ article.created_at|date:"d.m.Y" }} · {{ article.category }}</p>
+      <p class="mb-0">{{ article.text|truncatewords:20 }}</p>
+    </div>
+  </article>
+{% empty %}
+  <p class="alert alert-info">Статей пока нет. Создайте первую статью.</p>
+{% endfor %}
+{% endblock %}

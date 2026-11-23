@@ -1,0 +1,4 @@
+body { min-height: 100vh; display: flex; flex-direction: column; }
+main { flex: 1; }
+.form-page { max-width: 680px; }
+.article-text { max-width: 75ch; overflow-wrap: anywhere; }
